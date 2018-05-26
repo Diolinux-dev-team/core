@@ -11,7 +11,7 @@ git config --global user.email "build@travis-ci.org"
 git remote add deploy ssh://$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PORT/$DEPLOY_REPO.git
 git add -f vendor
 git commit -m "Auto deploy: $(date +'%Y-%m-%d %T')"
-git push deploy master
+git push deploy HEAD:master
  
 # Skip this command if you don't need to execute any additional commands after deploying.
 #ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT <<EOF
