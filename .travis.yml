@@ -45,7 +45,4 @@ deploy:
     branch: master
 
 notifications:
-  slack:
-    rooms:
-      - diolinuxmediagroup:u7wue4EXRNFq71hhlobDCVZf#development
-      - diolinuxmediagroup:u7wue4EXRNFq71hhlobDCVZf#devops
+    slack: diolinuxmediagroup:u7wue4EXRNFq71hhlobDCVZf
