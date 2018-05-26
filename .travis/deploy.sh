@@ -1,5 +1,4 @@
-#!/bin/sh
-set -ex
+#!/bin/bash
 
 DEPLOY_HOST=$([ "$TRAVIS_BRANCH" = "master" ] && echo $PRODUCTION_DEPLOY_HOST || echo $STAGING_DEPLOY_HOST)
 DEPLOY_PORT=$([ "$TRAVIS_BRANCH" = "master" ] && echo $PRODUCTION_DEPLOY_PORT || echo $STAGING_DEPLOY_PORT)
