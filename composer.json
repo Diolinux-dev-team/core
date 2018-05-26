@@ -1,0 +1,23 @@
+{
+    "name": "diolinux-plus/api",
+    "description": "Diolinux api rest",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gerardo Junior",
+            "email": "me@gerardo-junior.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {        
+        "php": "^7.0",
+        "ext-phalcon": "^3.3",
+        "zircote/swagger-php": "^2.0"
+    },
+    "require-dev": {
+        "ext-xdebug": "^2.6",
+        "codeception/codeception": "^2.1",
+        "phalcon/devtools": "^3.2"
+    }
+}
