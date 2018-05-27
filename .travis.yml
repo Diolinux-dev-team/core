@@ -19,6 +19,7 @@ addons:
 before_script:
 - echo -e "Host $STAGING_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
 - echo -e "Host $PRODUCTION_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
+- echo -e "UserKnownHostsFile /dev/null" >> ~/.ssh/config
 
 script:
 - mkdir vendor
@@ -33,14 +34,11 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: "./.travis/deploy.sh &>/dev/null"
+  script: "{./.travis/deploy.sh} 2>&1 > /dev/null"
   on:
-    branch: develop
-- provider: script
-  skip_cleanup: true
-  script: "./.travis/deploy.sh &>/dev/null"
-  on:
-    branch: master
+    branch: 
+    - develop
+    - master
 
 notifications:
   slack: diolinuxmediagroup:u7wue4EXRNFq71hhlobDCVZf
