@@ -17,9 +17,10 @@ addons:
   - "$PRODUCTION_DEPLOY_HOST"
 
 before_script:
-- echo -e "Host $STAGING_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
-- echo -e "Host $PRODUCTION_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
-- echo -e "UserKnownHostsFile /dev/null" >> ~/.ssh/config
+- echo "Host *
+            StrictHostKeyChecking no
+            UserKnownHostsFile /dev/null
+            LogLevel QUIET"> ~/.ssh/config
 
 script:
 - mkdir vendor
