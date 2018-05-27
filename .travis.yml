@@ -34,7 +34,7 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: "{./.travis/deploy.sh} 2>&1 > /dev/null"
+  script: "sh ./.travis/deploy.sh 2>&1 > /dev/null"
   on:
     branch: 
     - develop
