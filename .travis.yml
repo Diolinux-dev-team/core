@@ -17,8 +17,8 @@ addons:
   - "$PRODUCTION_DEPLOY_HOST"
 
 before_script:
-- echo -e "Host $STAGING_DEPLOY_HOSTntStrictHostKeyChecking non" >> ~/.ssh/config
-- echo -e "Host $PRODUCTION_DEPLOY_HOSTntStrictHostKeyChecking non" >> ~/.ssh/config
+- echo -e "Host $STAGING_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
+- echo -e "Host $PRODUCTION_DEPLOY_HOST StrictHostKeyChecking no" >> ~/.ssh/config
 
 script:
 - mkdir vendor
@@ -33,12 +33,12 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: "./.travis/deploy.sh"
+  script: "./.travis/deploy.sh &>/dev/null"
   on:
     branch: develop
 - provider: script
   skip_cleanup: true
-  script: "./.travis/deploy.sh"
+  script: "./.travis/deploy.sh &>/dev/null"
   on:
     branch: master
 
