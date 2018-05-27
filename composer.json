@@ -15,8 +15,6 @@
         "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
-        "ext-xdebug": "^2.6",
-        "codeception/codeception": "^2.1",
-        "phalcon/devtools": "^3.2"
+        "codeception/codeception": "^2.1"
     }
 }

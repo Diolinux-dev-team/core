@@ -16,8 +16,7 @@ before_script:
   - echo -e "Host $PRODUCTION_DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
-- mkdir vendor
-- touch vendor/test
+- composer install
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_e48376434120_key -iv $encrypted_e48376434120_iv -in .travis/deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -28,7 +27,7 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: "sh ./.travis/deploy.sh 2> /dev/null > /dev/null"
+  script: "$(sh ./.travis/deploy.sh)"
   on:
     branch: 
     - develop
