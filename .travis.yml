@@ -11,6 +11,10 @@ cache:
   directories:
   - "$HOME/.composer/cache/files"
 
+before_script:
+  - echo -e "Host $STAGING_DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host $PRODUCTION_DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 script:
 - mkdir vendor
 - touch vendor/test
@@ -20,8 +24,6 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
-- ssh-keyscan -t rsa -H $STAGING_DEPLOY_HOST >> ~/.ssh/known_hosts
-- ssh-keyscan -t rsa -H $PRODUCTION_DEPLOY_HOST >> ~/.ssh/known_hosts
 
 deploy:
 - provider: script
